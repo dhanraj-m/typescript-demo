@@ -1,4 +1,5 @@
-function sum(a: number, b: number): number {
-    return a + b;
+function sub(a: number, b: number): number {
+    return a - b;
 }
-console.log(sum(1, 2));
+
+console.log(sub(1, 2));
