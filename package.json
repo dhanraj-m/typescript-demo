@@ -1,0 +1,93 @@
+{
+  "name": "ts-project-seed",
+  "version": "1.0.8",
+  "description": "A seed project with the initial plumbing for TypeScript.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run lint && tsc -p tsconfig.json && npm run uglify && npm run browserify",
+    "uglify": "uglifyjs-folder dist --output dist/all.min.js --pattern \"**/*.js,!**/*min.js\"",
+    "browserify": "browserify -e dist/all.min.js --standalone TsProjectSeed -o dist/all.min.js",
+    "build:w": "tsc -p tsconfig.json -w",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "eslint": "eslint",
+    "test:tdd": "mocha --reporter min --require ts-node/register \"src/**/*.spec.ts\" --watch",
+    "test": "mocha --recursive --require ts-node/register \"src/**/*.spec.ts\"",
+    "cover": "nyc npm test",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "strictlint": "eslint ./src/ --ext 'js,ts,tsx' --max-warnings 0 --cache"
+  },
+  "keywords": [
+    "typescript",
+    "scaffolding"
+  ],
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "node_modules",
+      "typings",
+      "src/**/*.spec.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html",
+      "text"
+    ],
+    "all": true
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.6.2",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "browserify": "^16.3.0",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.5",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^6.1.4",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^14.1.1",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
+    "eslint-config-prettier": "^6.8.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-cypress": "^2.8.1",
+    "eslint-plugin-functional": "^1.0.2",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "eslint-plugin-relay": "^1.4.1",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.0",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.4"
+  }
+}
