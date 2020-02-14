@@ -1,5 +1,23 @@
-function sub(a: number, b: number): number {
-    return a - b;
+interface Student {
+    id: string;
+    age: number;
 }
 
-console.log(sub(1, 2));
+interface Employee {
+    companyId: string;
+}
+
+// Optional Chaining
+const students1: Student[] = [
+    { id: "ENL01", age: 20 },
+    { id: "ENL02", age: 25 },
+    { id: "ENL03", age: 27 },
+    { id: "ENL04", age: 10 }
+];
+
+
+
+function add(a, b) {
+    return a + b;
+}
+console.log(add("1", 2));
